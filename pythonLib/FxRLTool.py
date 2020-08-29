@@ -61,8 +61,8 @@ class FxDealerTrainer(gym.Env):
         
         if(acc != 0):
             if(self.Holding != 0):
+                reward = self.Holding * (self.nowClose - self.startHoldingValue) - FxDealerTrainer.SPREAD
                 self.Holding = 0
-                reward = acc * (self.nowClose - self.startHoldingValue) - FxDealerTrainer.SPREAD
                 reward *= 100
             else:
                 self.Holding = acc
